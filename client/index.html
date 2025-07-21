@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HaxBall Clone - Multiplayer Soccer Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Nickname Entry Screen -->
+    <div id="nickname-screen" class="screen active">
+        <div class="container">
+            <h1 class="game-title">HaxBall Clone</h1>
+            <p class="game-subtitle">Physics-based multiplayer soccer game</p>
+            <div class="nickname-form">
+                <label for="nickname-input">Choose your nickname:</label>
+                <input type="text" id="nickname-input" maxlength="20" placeholder="Enter nickname...">
+                <button id="nickname-submit">Play Now!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Room Selection Screen -->
+    <div id="room-screen" class="screen">
+        <div class="container">
+            <h2>Join or Create a Room</h2>
+            <div class="room-options">
+                <div class="room-section">
+                    <h3>Create New Room</h3>
+                    <button id="create-room-btn" class="room-btn">Create Room</button>
+                </div>
+                <div class="room-section">
+                    <h3>Join Existing Room</h3>
+                    <input type="text" id="room-code-input" placeholder="Enter room code..." maxlength="6">
+                    <button id="join-room-btn" class="room-btn">Join Room</button>
+                </div>
+            </div>
+            <div class="room-list">
+                <h3>Public Rooms</h3>
+                <div id="public-rooms-list">
+                    <p>Loading rooms...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+        <div class="game-container">
+            <!-- Game HUD -->
+            <div class="game-hud">
+                <div class="score-board">
+                    <div class="team red-team">
+                        <span class="team-name">Red</span>
+                        <span class="team-score" id="red-score">0</span>
+                    </div>
+                    <div class="game-timer" id="game-timer">0:00</div>
+                    <div class="team blue-team">
+                        <span class="team-score" id="blue-score">0</span>
+                        <span class="team-name">Blue</span>
+                    </div>
+                </div>
+                <div class="room-info">
+                    <span>Room: <span id="current-room-code">------</span></span>
+                    <span>Players: <span id="player-count">0</span>/10</span>
+                </div>
+            </div>
+
+            <!-- Game Canvas -->
+            <canvas id="game-canvas" width="800" height="400"></canvas>
+
+            <!-- Game Controls Info -->
+            <div class="controls-info">
+                <p><strong>Controls:</strong> Use WASD or Arrow Keys to move</p>
+            </div>
+
+            <!-- Chat System -->
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages"></div>
+                <div class="chat-input-container">
+                    <input type="text" id="chat-input" placeholder="Type a message..." maxlength="100">
+                    <button id="chat-send">Send</button>
+                </div>
+            </div>
+
+            <!-- Player List -->
+            <div class="player-list">
+                <h4>Players</h4>
+                <div class="team-players">
+                    <div class="team-section">
+                        <h5>Red Team</h5>
+                        <div id="red-team-players" class="players"></div>
+                    </div>
+                    <div class="team-section">
+                        <h5>Blue Team</h5>
+                        <div id="blue-team-players" class="players"></div>
+                    </div>
+                    <div class="team-section">
+                        <h5>Spectators</h5>
+                        <div id="spectator-players" class="players"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Connection Status -->
+    <div id="connection-status" class="connection-status">
+        <span id="status-text">Connecting...</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="physics.js"></script>
+    <script src="network.js"></script>
+    <script src="ui.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
+
